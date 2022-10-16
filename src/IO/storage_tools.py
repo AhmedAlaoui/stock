@@ -1,6 +1,6 @@
 # https://cloud.google.com/storage/docs/reference/libraries
 # https://googleapis.dev/python/storage/latest/client.html
-
+import os
 import logging
 
 import joblib
@@ -10,6 +10,9 @@ from google.cloud import storage
 
 def create_bucket(bucket_name):
     log = logging.getLogger()
+
+    credential_path = r"C:\Users\elamy\OneDrive\Documents\McGill\my-project-ycng-228-363013-b46cd4c4412c.json"
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
     storage_client = storage.Client()
     if bucket_name not in [x.name for x in storage_client.list_buckets()]:
